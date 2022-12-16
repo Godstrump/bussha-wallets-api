@@ -1,20 +1,14 @@
-const os = require("os");
-const fs = require("fs");
 const path = require("path");
 const jsonServer = require("json-server");
 
 const server = jsonServer.create();
-const dbPath = path.join(os.tmpdir(), "db.json");
-
-(async () => {
-    const rawdata = fs.readFileSync("db.json");
-    fs.writeFileSync(dbPath, rawdata);
-})();
-
-const router = jsonServer.router(dbPath);
+const router = jsonServer.router(path.join(__dirname, "db.json"));
 const middlewares = jsonServer.defaults();
 
+const PORT = process.env.SERVER_PORT || 3090;
+
 server.use(middlewares);
+
 server.use(jsonServer.bodyParser);
 
 server.use("/accounts", (req, res, next) => {
@@ -62,3 +56,6 @@ server.use("/accounts", (req, res, next) => {
 });
 
 server.use(router);
+server.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+});
