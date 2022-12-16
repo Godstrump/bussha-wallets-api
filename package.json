@@ -1,9 +1,7 @@
 {
     "name": "busha-fe-test",
     "version": "1.0.0",
-    "engines": {
-      "node": "16.13.2"
-    },
+    "main": "index.js",
     "scripts": {
       "server": "nodemon index.js",
       "start": "node index.js",
