@@ -5,9 +5,9 @@
       "node": "16.13.2"
     },
     "scripts": {
-      "server": "nodemon server.js",
-      "start": "node server.js",
-      "build": "do notign"
+      "server": "nodemon index.js",
+      "start": "node index.js",
+      "build": "do nothing"
     },
     "dependencies": {},
     "devDependencies": {
